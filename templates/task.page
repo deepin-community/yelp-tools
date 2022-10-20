@@ -1,0 +1,69 @@
+<?yelp-tmpl-desc Description of how to accomplish a user task?>
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic" style="task" version="1.1"
+      id="@ID@">
+  <info>
+    <!--
+        Recommended statuses: stub incomplete draft outdated review candidate final
+        Remove version attributes you don't use.
+    -->
+    <revision version="0.1" docversion="0.1" pkgversion="0.1" date="@DATE@" status="stub"/>
+
+    <credit type="author copyright">
+      <name>@NAME@</name>
+      <email>@EMAIL@</email>
+      <years>@YEAR@</years>
+    </credit>
+
+    <!--
+        This puts a link to this topic on the index page.
+        Change the xref to link it from another guide.
+    -->
+    <link type="guide" xref="index"/>
+
+    <!--
+        Think about whether other pages should be in the seealso list.
+        The target page will automatically get a seealso link back.
+    <link type="seealso" xref="someotherid"/>
+    -->
+
+    <!--
+        Think about whether external resources should be in the seealso
+        list. These require a title.
+    <link type="seealso" href="http://someurl">
+      <title>Link title</title>
+    </link>
+    -->
+
+    <desc>Write a short page description here.</desc>
+
+    <keywords>comma-separated list, of keywords, for search</keywords>
+  </info>
+
+  <title>@TITLE@</title>
+
+  <p>Short introductory text: Write a couple sentences about what the
+  user is doing here, and why they might want to do it.</p>
+
+  <list>
+    <title>Prerequisites</title>
+    <item><p>Optionally, list things the user needs to know or do first.</p></item>
+    <item><p>Use links to other pages whenever they make sense.</p></item>
+  </list>
+
+  <steps>
+    <title>Optional title if different from page title or if prereqs present</title>
+    <item><p>First step...</p></item>
+    <item><p>Second step...</p></item>
+    <item><p>Third step...</p></item>
+  </steps>
+
+  <p>Optionally, write expected results if non-obvious.</p>
+
+  <list>
+    <title>Next steps</title>
+    <item><p>Optionally, links to other things the user might do now.</p></item>
+    <item><p>But consider using seealso and other info links instead.</p></item>
+  </list>
+
+</page>

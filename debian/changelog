@@ -1,0 +1,197 @@
+yelp-tools (3.38.0-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 15 Sep 2020 21:28:20 +0200
+
+yelp-tools (3.37.90-1) experimental; urgency=medium
+
+  * New upstream release
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 10 Aug 2020 12:38:50 +0200
+
+yelp-tools (3.32.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 18 Sep 2019 23:53:21 +0200
+
+yelp-tools (3.32.0-1) experimental; urgency=medium
+
+  * New upstream release
+    - no changes
+  * debian/watch: Only watch for stable releases
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 16 Mar 2019 08:15:57 -0400
+
+yelp-tools (3.31.90-1) unstable; urgency=medium
+
+  * New upstream release
+  * Build-Depend on debhelper-compat 12 and drop debian/compat
+  * Build-Depend on dh-sequence-gnome
+  * Bump Standards-Version to 4.3.0
+
+ -- Jeremy Bicha <jbicha@debian.org>  Mon, 04 Feb 2019 16:45:58 -0500
+
+yelp-tools (3.28.0-1) unstable; urgency=medium
+
+  * New upstream release (LP: #1758467)
+  * Drop patch applied in new release:
+    - Disable-net-access-in-make-check.patch
+  * Depend and Build-Depend on yelp-xsl >= 3.28
+  * Add jing as alternate dependency for libxml2-utils
+
+ -- Jeremy Bicha <jbicha@debian.org>  Wed, 28 Mar 2018 20:42:27 -0400
+
+yelp-tools (3.18.0-5) unstable; urgency=medium
+
+  * Update Vcs fields for migration to https://salsa.debian.org/
+  * Bump debhelper compat to 11
+  * Cherry-pick Disable-net-access-in-make-check.patch to significantly
+    reduce the time it takes to build aisleriot (Closes: #839549)
+
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 23 Feb 2018 11:48:42 -0500
+
+yelp-tools (3.18.0-4) unstable; urgency=medium
+
+  [ Jeremy Bicha ]
+  * Update Vcs fields for conversion to git
+  * Add debian/gbp.conf
+  * Bump Standards-Version to 4.1.2
+  * Mark as Multi-Arch: foreign
+
+  [ Robert Ancell ]
+  * Add relative-symlinks.patch:
+    - Use relative symlinks to allow relocating help files (useful for Snap)
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 16 Dec 2017 10:07:09 -0500
+
+yelp-tools (3.18.0-3) unstable; urgency=medium
+
+  [ Florian Schlichting ]
+  * Ship a copy of mallard-1.0.rng and use that in yelp-check instead of
+    downloading the same file every time. (Closes: #788769)
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 14 Mar 2017 01:25:55 +0100
+
+yelp-tools (3.18.0-2) unstable; urgency=medium
+
+  * Convert from cdbs to dh.
+  * Bump debhelper compat level to 10.
+  * Bump Standards-Version to 3.9.8.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 21 Sep 2016 03:58:01 +0200
+
+yelp-tools (3.18.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump build-dependencies according to configure.ac changes:
+    - bump yelp-xsl to >= 3.17.3
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 23 Sep 2015 19:33:25 +0200
+
+yelp-tools (3.16.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 19 May 2015 15:38:06 +0200
+
+yelp-tools (3.14.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add Homepage field.
+  * Bump Standards-Version to 3.9.6. No further changes.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 14 Oct 2014 18:31:24 +0200
+
+yelp-tools (3.14.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 23 Sep 2014 16:11:52 +0200
+
+yelp-tools (3.13.3-1) experimental; urgency=medium
+
+  * New upstream development release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 06 Sep 2014 05:22:41 -0700
+
+yelp-tools (3.12.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.5
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 23 May 2014 12:55:39 +0200
+
+yelp-tools (3.12.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop debian/patches/0001-Fix-posix-shell-syntax-error.patch
+    - merged upstream.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 04 Apr 2014 21:15:11 +0200
+
+yelp-tools (3.10.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.4. No further changes.
+  * debian/patches/0001-Fix-posix-shell-syntax-error.patch: Fix syntax error
+    in yelp-check.
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 17 Oct 2013 00:48:12 +0200
+
+yelp-tools (3.6.1-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 30 May 2013 10:10:59 +0200
+
+yelp-tools (3.6.1-1) experimental; urgency=low
+
+  * Team upload
+  * New upstream release (Closes: #690955)
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 22 Oct 2012 22:19:08 +0100
+
+yelp-tools (3.4.1-1) unstable; urgency=low
+
+  * New upstream release:
+    - yelp.m4: Fix dist when using the LINGUAS envar
+    - Fix "command not found" configure script messages
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 16 Apr 2012 23:12:23 +0200
+
+yelp-tools (3.4.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 27 Mar 2012 17:50:12 +0200
+
+yelp-tools (3.3.4-1) experimental; urgency=low
+
+  * New upstream development release.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 20 Mar 2012 03:59:04 +0100
+
+yelp-tools (3.3.3-1) experimental; urgency=low
+
+  * New upstream development release.
+  * debian/copyright: Update Format to the final version 1.0.
+  * Bump Standards-Version to 3.9.3.
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 17 Mar 2012 15:22:25 +0100
+
+yelp-tools (3.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/watch:
+    - Track .xz tarballs.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 18 Oct 2011 01:24:33 +0200
+
+yelp-tools (3.2.0-1) unstable; urgency=low
+
+  * Initial upload to Debian. Based on work by Ubuntu, thanks! Closes: #643892
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 30 Sep 2011 18:34:59 +0200

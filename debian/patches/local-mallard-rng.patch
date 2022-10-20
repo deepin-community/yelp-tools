@@ -1,0 +1,71 @@
+From: Florian Schlichting <fsfs@debian.org>
+Date: Tue, 14 Mar 2017 00:25:49 +0000
+Subject: use locally provided mallard-1.0.rng file
+
+Do not download http://projectmallard.org/1.0/mallard-1.0.rng on every
+invocation but ship a copy in the package and use that instead. This is a
+workaround until we can depend on a mallard-rng Debian package, that should
+be used automatically when properly registered with the XML catalog system.
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=788769
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=765215
+---
+ tools/yelp-check.in | 43 +++----------------------------------------
+ 1 file changed, 3 insertions(+), 40 deletions(-)
+
+diff --git a/tools/yelp-check.in b/tools/yelp-check.in
+index 526679d..ea26cca 100755
+--- a/tools/yelp-check.in
++++ b/tools/yelp-check.in
+@@ -1078,49 +1078,12 @@ yelp_validate_db () {
+ }
+ 
+ yelp_validate_page () {
+-    # Using temp files because pipes create subshells, making it really
+-    # hard to return the right exit status in a portable way.
+-    if [ "x$check_rng_dir" = "x" ]; then
+-        check_rng_dir=`mktemp -d "${TMPDIR:-/tmp}"/yelp-XXXXXXXX`
+-    fi
+     check_out_file=`mktemp "${TMPDIR:-/tmp}"/yelp-XXXXXXXX`
+-    check_rng_file=`(
+-            echo '<xsl:stylesheet'
+-            echo ' xmlns:cache="http://projectmallard.org/cache/1.0/"'
+-            echo ' xmlns:xsl="http://www.w3.org/1999/XSL/Transform"'
+-            echo ' version="1.0">'
+-            echo '<xsl:output method="text"/>'
+-            echo '<xsl:template match="/*">'
+-            echo '<xsl:choose>'
+-            echo '<xsl:when test="string(@version) != '"''"'">'
+-            echo '<xsl:value-of select="@version"/>'
+-            echo '</xsl:when>'
+-            echo '<xsl:when test="/cache:cache">'
+-            echo '<xsl:text>cache/1.0 1.0</xsl:text>'
+-            echo '</xsl:when>'
+-            echo '<xsl:otherwise>'
+-            echo '<xsl:text>1.0</xsl:text>'
+-            echo '</xsl:otherwise>'
+-            echo '</xsl:choose>'
+-            echo '</xsl:template>'
+-            echo '</xsl:stylesheet>'
+-            ) | xsltproc - "$1"`
+-    check_rng_file=`urlencode "$check_rng_file" /`.rng
+-    if [ ! -f "$check_rng_dir/$check_rng_file" ]; then
+-        # If we've already made an RNG file for this version string, don't
+-        # do it again. We've urlencoded the file name + slashes, because
+-        # version strings often contain slashes. But xsltproc treats the
+-        # -o option as a URL and urldecodes, so doubly urlencode, because
+-        # we want the urlencoded string to be the on-disk name.
+-        xsltproc -o "$check_rng_dir/"`urlencode "$check_rng_file"` \
+-            --param rng.strict "$check_strict" \
+-            --stringparam rng.strict.allow "$check_strict_allow" \
+-            "$xsl_mal_rng" "$1"
+-    fi
++    check_rng_file="/usr/share/yelp-tools/mallard/mallard-1.0.rng"
+     if [ "x$check_jing" = "x1" ]; then
+-        jing -i "$check_rng_dir/$check_rng_file" "$1" > "$check_out_file" 2>&1
++        jing -i "$check_rng_file" "$1" > "$check_out_file" 2>&1
+     else
+-        xmllint --noout --xinclude --noent --relaxng "$check_rng_dir/$check_rng_file" "$1" > "$check_out_file" 2>&1
++        xmllint --noout --xinclude --noent --relaxng "$check_rng_file" "$1" > "$check_out_file" 2>&1
+     fi
+     ret="$?"
+     cat "$check_out_file" | grep -v 'validates$'
